@@ -22,7 +22,13 @@ class PhotoGridAdapter : ListAdapter<MarsPhoto,
     }
 
     companion object DiffCallback : DiffUtil.ItemCallback<MarsPhoto>() {
-    }
+        override fun areItemsTheSame(oldItem: MarsPhoto, newItem: MarsPhoto): Boolean {
+            return oldItem.id == newItem.id
+        }
+
+        override fun areContentsTheSame(oldItem: MarsPhoto, newItem: MarsPhoto): Boolean {
+            return oldItem.imgSrcUrl == newItem.imgSrcUrl
+        }
 }
 
 class MarsPhotoViewHolder(private var binding:
